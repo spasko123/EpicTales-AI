@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "397219707286",
+    "project_id": "short-horror-stories",
+    "storage_bucket": "short-horror-stories.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:397219707286:android:1ba814d794bec6ce60c5b7",
+        "android_client_info": {
+          "package_name": "com.s.epictalesaiapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTEQcvVohBobZF0wgP-Sx3FiW29KEXr74"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
