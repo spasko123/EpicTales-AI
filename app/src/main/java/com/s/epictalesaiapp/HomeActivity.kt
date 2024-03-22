@@ -1,7 +1,9 @@
 package com.s.epictalesaiapp
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -22,6 +24,9 @@ class HomeActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         val currentUser = auth.currentUser
         val uid = currentUser?.uid
+
+
+
 
         if (uid != null) {
             db.collection("users").document(uid)

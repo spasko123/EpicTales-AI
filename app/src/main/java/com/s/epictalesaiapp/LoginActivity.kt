@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 class LoginActivity : AppCompatActivity() {
 
     lateinit var txtRegister: TextView
+    lateinit var txtForgotPassword: TextView
     lateinit var edtxEmailAddress: EditText
     lateinit var edtxPassword: EditText
     lateinit var btnSignIn: Button
@@ -26,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         txtRegister = findViewById(R.id.txtRegister)
+        txtForgotPassword = findViewById(R.id.txtForgotPassword)
         edtxEmailAddress = findViewById(R.id.edtxEmailAddress)
         edtxPassword = findViewById(R.id.edtxPassword)
         btnSignIn = findViewById(R.id.btnSignIn)
@@ -35,6 +37,15 @@ class LoginActivity : AppCompatActivity() {
         txtRegister.setOnClickListener(){
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+        }
+
+        txtForgotPassword.setOnClickListener{
+            email = edtxEmailAddress.text.toString().trim()
+            if(email.isEmpty() || !email.contains('@')){
+                edtxEmailAddress.error = "Please provide a valid email address!"
+                return@setOnClickListener
+            }
+            resetPassword(email)
         }
 
         btnSignIn.setOnClickListener(){
@@ -55,6 +66,25 @@ class LoginActivity : AppCompatActivity() {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             window.statusBarColor = android.graphics.Color.TRANSPARENT
         }
+    }
+
+    private fun resetPassword(email: String) {
+        auth.sendPasswordResetEmail(email)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(
+                        this,
+                        "Password reset email sent. Check your email inbox.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Failed to send reset email. ${task.exception?.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
     }
     private fun signIn(email: String, password: String){
         auth.signInWithEmailAndPassword(email, password)
