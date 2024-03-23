@@ -109,8 +109,7 @@
             android:fontFamily="@font/montserrat"
             android:text="Doesn't have an account?"
             android:textColor="#E9F1F1"
-            android:textSize="17sp"
-            />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/txtRegister"
@@ -120,8 +119,7 @@
             android:fontFamily="@font/montserrat_extrabold"
             android:text="Register"
             android:textColor="#E9F1F1"
-            android:textSize="17sp"
-             />
+            android:textSize="17sp" />
 
     </LinearLayout>
 
@@ -137,6 +135,16 @@
         android:textColor="#E9F1F1"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

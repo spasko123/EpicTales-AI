@@ -11,7 +11,7 @@
         android:id="@+id/txtTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="428dp"
+        android:layout_marginTop="444dp"
         android:fontFamily="@font/montserrat"
         android:text="TextView"
         android:textColor="#263138"
@@ -23,25 +23,26 @@
 
     <TextView
         android:id="@+id/txtName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:gravity="center|top"
+        android:layout_marginTop="48dp"
         android:fontFamily="@font/titan_one"
         android:text="EpicTales AI"
         android:textColor="#263138"
         android:textSize="35sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_height="309dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
-        app:cardCornerRadius="20dp"
+        android:layout_marginEnd="20dp"
         android:elevation="40dp"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtName">
@@ -58,16 +59,16 @@
                 android:background="#99000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" >
+                app:layout_constraintStart_toStartOf="parent">
 
                 <Button
                     android:id="@+id/button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#107dac"
-                    android:text="Create your story"
-                    android:textColor="@color/white"
                     android:fontFamily="@font/montserrat"
+                    android:text="Create a story"
+                    android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -83,13 +84,35 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavMenu"
+        style="@style/BottomNavigationTextStyle"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#107dac"
-        style="@style/BottomNavigationTextStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu"
         tools:layout_editor_absoluteX="4dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtName"
+        app:srcCompat="@drawable/search" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtName"
+        app:srcCompat="@drawable/premium" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

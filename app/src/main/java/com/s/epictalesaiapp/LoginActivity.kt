@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -18,9 +19,10 @@ class LoginActivity : AppCompatActivity() {
     lateinit var edtxEmailAddress: EditText
     lateinit var edtxPassword: EditText
     lateinit var btnSignIn: Button
+    lateinit var auth: FirebaseAuth
+    lateinit var progressBar: ProgressBar
     var email: String = ""
     var password: String = ""
-    lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,13 +33,15 @@ class LoginActivity : AppCompatActivity() {
         edtxEmailAddress = findViewById(R.id.edtxEmailAddress)
         edtxPassword = findViewById(R.id.edtxPassword)
         btnSignIn = findViewById(R.id.btnSignIn)
+        progressBar = findViewById(R.id.progressBar)
+
+        progressBar.visibility = View.GONE
 
         auth = FirebaseAuth.getInstance()
 
         txtRegister.setOnClickListener(){
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
-            overridePendingTransition(R.anim.slided_in_right, R.anim.slide_out_left)
         }
 
         txtForgotPassword.setOnClickListener{
@@ -50,14 +54,20 @@ class LoginActivity : AppCompatActivity() {
         }
 
         btnSignIn.setOnClickListener(){
+            progressBar.visibility = View.VISIBLE
+            btnSignIn.visibility = View.INVISIBLE
             email = edtxEmailAddress.text.toString().trim()
             if(email.isEmpty() || !email.contains('@')){
                 edtxEmailAddress.error = "Please provide a valid email address"
+                progressBar.visibility = View.GONE
+                btnSignIn.visibility = View.VISIBLE
                 return@setOnClickListener
             }
             password = edtxPassword.text.toString().trim()
             if(password.isEmpty()){
                 edtxPassword.error = "Please provide a password!"
+                progressBar.visibility = View.GONE
+                btnSignIn.visibility = View.VISIBLE
                 return@setOnClickListener
             }
             signIn(email, password)
@@ -93,9 +103,8 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
-                    overridePendingTransition(R.anim.slide_enter_bottom, R.anim.slide_exit_top)
                 } else {
-                    Toast.makeText(baseContext, "There is no registered account with the provided data", Toast.LENGTH_LONG).show()
+                    Toast.makeText(baseContext, "We couldn't create account. Try again later", Toast.LENGTH_LONG).show()
 //                    Toast.makeText(
 //                        baseContext, "Login failed. ${task.exception?.message}",
 //                        Toast.LENGTH_SHORT

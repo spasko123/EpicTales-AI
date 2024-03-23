@@ -3,4 +3,17 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="CustomProgressBar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:progressTint">#107dac</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">#33B0E6</item>
+        <item name="colorPrimaryDark">#33B0E6</item>
+        <item name="colorAccent">#33B0E6</item>
+    </style>
+
+
 </resources>
