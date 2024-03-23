@@ -37,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
         txtRegister.setOnClickListener(){
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slided_in_right, R.anim.slide_out_left)
         }
 
         txtForgotPassword.setOnClickListener{
@@ -92,7 +93,7 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
-                    finish()
+                    overridePendingTransition(R.anim.slide_enter_bottom, R.anim.slide_exit_top)
                 } else {
                     Toast.makeText(baseContext, "There is no registered account with the provided data", Toast.LENGTH_LONG).show()
 //                    Toast.makeText(

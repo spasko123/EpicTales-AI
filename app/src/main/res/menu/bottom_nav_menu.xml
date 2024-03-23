@@ -11,5 +11,5 @@
     <item
         android:id="@+id/profile"
         android:title="Profile"
-        android:icon="@drawable/common_full_open_on_phone"/>
+        android:icon="@drawable/baseline_account_box_24"/>
 </menu>
